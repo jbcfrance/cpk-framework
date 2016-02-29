@@ -1,0 +1,11 @@
+<fieldset class="col-xs-8">
+  <input type='hidden' name="current_step" value="5" />
+  <div class="form-group has-feedback form-group-sm">
+    <label for="comment">Comment</label>
+    <textarea class="form-control" name="comment" placeholder="Comment"></textarea>
+  </div>
+  <div class="form-group has-feedback form-group-sm">
+    <label for="opco_comment">Comment for <?php echo $this->aVars['CCSDatas']->{'opco'}->{'value'}; ?></label>
+    <textarea class="form-control" name="opco_comment" placeholder="Comment for <?php echo $this->aVars['CCSDatas']->{'opco'}->{'value'}; ?>"></textarea>
+  </div>
+</fieldset>

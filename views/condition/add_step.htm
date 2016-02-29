@@ -1,0 +1,95 @@
+<form name="ccs_prepa_form" novalidate="novalidate">
+  <div class="container-fluid">
+    <div data-wizard-init="" class="wizard">
+      <div class="steps-index-container">
+        <ul class="steps">
+          <li data-step="1" <?php if($this->aVars['iCurrentStep'] == 1) :?> class="active" <?php elseif($this->aVars['iCurrentStep'] > 1): ?>  class="completed" <?php endif; ?> >
+              <span class="step-index">
+              <span class="label">1</span>
+            </span>
+            <span class="step-text">Opco and CCS's type</span>
+            <span class="wiz-icon-chevron-right colorA"></span>
+            <span class="wiz-icon-chevron-right colorB"></span>
+          </li>
+          <li data-step="2"  <?php if($this->aVars['iCurrentStep'] == 2) :?> class="active" <?php elseif($this->aVars['iCurrentStep'] > 2): ?>  class="completed" <?php endif; ?> >
+              <span class="step-index">
+              <span class="label">2</span>
+            </span>
+            <span class="step-text">General informations</span>
+            <span class="wiz-icon-chevron-right colorA"></span>
+            <span class="wiz-icon-chevron-right colorB"></span>
+          </li>
+          <li data-step="3"  <?php if($this->aVars['iCurrentStep'] == 3) :?> class="active" <?php elseif($this->aVars['iCurrentStep'] > 3): ?>  class="completed" <?php endif; ?> >
+              <span class="step-index">
+              <span class="label">3</span>
+            </span>
+            <span class="step-text">Product</span>
+            <span class="wiz-icon-chevron-right colorA"></span>
+            <span class="wiz-icon-chevron-right colorB"></span>
+          </li>
+          <li data-step="4"  <?php if($this->aVars['iCurrentStep'] == 4): ?> class="active" <?php elseif($this->aVars['iCurrentStep'] > 4): ?>  class="completed" <?php endif; ?> >
+              <span class="step-index">
+              <span class="label">4</span>
+            </span>
+            <span class="step-text">Freight</span>
+            <span class="wiz-icon-chevron-right colorA"></span>
+            <span class="wiz-icon-chevron-right colorB"></span>
+          </li>
+          <li data-step="5" <?php if($this->aVars['iCurrentStep'] == 5): ?> class="final active" <?php elseif($this->aVars['iCurrentStep'] > 5): ?> class="final completed" <?php else: ?> class="final" <?php endif; ?> >
+              <span class="step-index">
+              <span class="label">5</span>
+            </span>
+            <span class="step-text">Comments</span>
+            <span class="wiz-icon-chevron-right colorA"></span>
+            <span class="wiz-icon-chevron-right colorB"></span>
+          </li>
+        </ul>
+        <div class="top-actions">
+          <div class="btn-group">
+            <?php if($this->aVars['iCurrentStep'] > 1) : ?>
+            <span class="btn btn-default btn-mini btn-xs btn-prev">
+              <i class="wiz-icon-arrow-left"></i>
+              <span class="previous-text">Previous</span>
+            </span>
+            <?php endif; ?>
+            <?php if($this->aVars['iCurrentStep'] < 5) : ?>
+            <span class="btn btn-default btn-mini btn-xs btn-next">
+              <span class="next-text">Next</span>
+              <i class="wiz-icon-arrow-right"></i>
+            </span>
+            <?php else : ?>
+            <span class="btn btn-success btn-mini btn-xs btn-next" id="submit">
+              <span class="next-text">Complete</span>
+              <i class="wiz-icon-arrow-right"></i>
+            </span>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
+      <div class="steps-content">
+        <div data-step="<?php echo $this->aVars['iCurrentStep']; ?>" class="step-pane active  container-fluid ">
+          <?php require(BASE_PATH.'views/costsheet/content_step/content_step_'.$this->aVars['iCurrentStep'].'.htm'); ?>
+        </div>
+        <div class="bottom-actions">
+          <?php if($this->aVars['iCurrentStep'] > 1) : ?>
+          <span class="btn btn-default btn-mini btn-xs btn-prev">
+            <i class="wiz-icon-arrow-left"></i>
+            <span class="previous-text">Previous</span>
+          </span>
+          <?php endif; ?>
+          <?php if($this->aVars['iCurrentStep'] < 5) : ?>
+          <span class="btn btn-default btn-mini btn-xs btn-next">
+            <span class="next-text">Next</span>
+            <i class="wiz-icon-arrow-right"></i>
+          </span>
+          <?php else : ?>
+          <span class="btn btn-success btn-mini btn-xs btn-next">
+            <span class="next-text">Complete</span>
+            <i class="wiz-icon-arrow-right"></i>
+          </span>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+  </div><!--/.fluid-container-->
+</form>

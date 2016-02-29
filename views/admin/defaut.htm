@@ -1,0 +1,8 @@
+<ul class="list-group " >
+  <?php foreach($this->aVars['aEntities'] as $aEntity): ?>
+  <li class="list-group-item">
+    <span class="badge"><?php echo $aEntity['count']; ?></span>
+    <a href="<?php echo HTML_ROOT_PATH;?>admin/entity/<?php echo $aEntity['name']; ?>">Administration des <?php echo ucfirst($aEntity['name']); ?> </a>
+  </li>
+  <?php endforeach;?>
+</ul>

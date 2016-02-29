@@ -1,0 +1,86 @@
+<table class="table" style="font-size:0.9em;">
+  <tr>
+    <th>ID Nego</th>
+    <th>Type Nego</th>
+    <th>Libelé Négociation</th>
+    <th>Date de création</th>
+    <th>Marque</th>
+    <th>Plan Com (HT)</th>
+    <th>Contrat</th>
+    <th>Justificatifs</th>
+    <th>Action</th>
+  </tr>
+  <?php foreach($this->aVars["aNegociations"] as $oNegociation) :?>
+  <tr>
+    <td><?php echo $oNegociation->getId(); ?></td>
+    <td>
+      <?php if(false === is_null($oNegociation->getTypeNego())): ?>
+      <?php echo $oNegociation->getTypeNego()->getLabel(); ?>
+      <?php else: ?>
+
+      <?php endif;?>
+    </td>
+    <td><?php echo $oNegociation->getLabelAction(); ?></td>
+    <td><?php echo $oNegociation->getTimestamp()->format('Y-m-d'); ?></td>
+    <td>
+      <?php echo $oNegociation->getMarque(); ?> 
+      <?php if($oNegociation->getGroupMarque() != '') : ?>
+      (Groupe : <?php echo $oNegociation->getGroupMarque(); ?>)
+      <?php endif;?>
+    </td>
+    <td><?php echo ($oNegociation->getPlanCom() != '')? $oNegociation->getPlanCom() : '0.00' ; ?> &euro; HT</td>
+    <td>
+      <?php if(false === is_null($oNegociation->getContrat())): ?>
+      <?php if($oNegociation->getContrat()->gethasContrat()) : ?>
+      <button type="button" class="btn btn-success" aria-label="Contrat présent !">
+        <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span>
+      </button>
+      <?php else: ?>
+      <button type="button" class="btn btn-danger" aria-label="Contrat absent !">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </button>
+      <?php endif; ?>
+      <?php else: ?>
+      <button type="button" class="btn btn-danger" aria-label="Contrat absent !">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </button>
+      <?php endif;?>
+    </td>
+    <td>
+      <?php if(false === is_null($oNegociation->getContrat())): ?>
+      <?php if($oNegociation->getContrat()->gethasJustif()) : ?>
+      <button type="button" class="btn btn-success" aria-label="Justificatif présent !">
+        <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span>
+      </button>
+      <?php else: ?>
+      <button type="button" class="btn btn-danger" aria-label="Justificatif absent !">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </button>
+      <?php endif; ?>
+      <?php else: ?>
+      <button type="button" class="btn btn-danger" aria-label="Justificatif absent !">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </button>
+      <?php endif;?>
+    </td>
+    <td>
+      <div class="btn-group-vertical" role="group" aria-label="Actions">
+        <?php if(false === is_null($oNegociation->getContrat())): ?>
+        <a class="btn btn-primary" href="<?php echo HTML_ROOT_PATH;?>condition/edit/Contrat/<?php echo $oNegociation->getContrat()->getId();?>">Editer Contrat</a>
+        <?php else: ?>
+        <a class="btn btn-primary" href="<?php echo HTML_ROOT_PATH;?>condition/add/Contrat">Créer Contrat</a>
+        <?php endif; ?>
+        <?php if(false === is_null($oNegociation->getFinancement())): ?>
+        <a class="btn btn-success" href="<?php echo HTML_ROOT_PATH;?>condition/edit/Financement/<?php echo $oNegociation->getFinancement()->getId();?>">Editer Financement</a>
+        <?php else: ?>
+        <a class="btn btn-success" href="<?php echo HTML_ROOT_PATH;?>condition/add/Financement">Créer Financement</a>
+        <?php endif; ?>
+        <a class="btn btn-danger" href="<?php echo HTML_ROOT_PATH;?>condition/edit/Negociation/<?php echo $oNegociation->getId();?>">Editer Negociation</a>
+        <?php if(false === is_null($oNegociation->getContrat())): ?>
+        <a class="btn btn-default" href="<?php echo HTML_ROOT_PATH;?>condition/admin_pj/Contrat/<?php echo $oNegociation->getContrat()->getId();?>">Administrer les PJ</a>
+        <?php endif; ?>
+      </div>
+    </td>
+  </tr>
+  <?php endforeach; ?>
+</table>

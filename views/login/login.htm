@@ -1,0 +1,20 @@
+<div class="login-container">
+  <div class="login-form">
+    <form class="form-horizontal" role="form" method="post" action="<?php echo HTML_ROOT_PATH;?>login/login/">
+      <div class="form-group">
+        <label class="control-label col-sm-5">Login</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" name="login" required value="<?php echo $this->aVars['sLogin'] ;?>" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-5">Mot de passe</label>
+        <div class="col-sm-5">
+          <input type="password" class="form-control" name="pwd" required />
+        </div>
+      </div>
+      <input type="submit" class="btn btn-primary sub-login" name="sub" value="Connecter" />
+    </form>
+  </div>
+
+</div>

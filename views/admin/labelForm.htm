@@ -1,0 +1,35 @@
+<div class="panel panel-danger">
+  <div class="panel-heading">Administration : <?php echo $this->aVars['entityName'];?></div>
+  <div class="panel-body">
+    <?php if(count($this->aVars['aAllResult']) > 0):?>
+    <table class="table">
+      <tr>
+        <th class="col-sm-2">ID</th>
+        <th >Label</th>
+        <th class="col-sm-1"></th>
+      </tr>
+      <?php foreach($this->aVars['aAllResult'] as $oEntity): ?>
+      <tr>
+        <td><?php echo $oEntity->getId(); ?></td>
+        <td><a href="#" class="entity_label" data-type="text" data-pk="<?php echo $oEntity->getId(); ?>" data-url="<?php echo HTML_ROOT_PATH ;?>admin/do_update/<?php echo $this->aVars['entityName'];?>" data-title="Entrer un label"><?php echo $oEntity->getLabel(); ?></a></td>
+        <td><button name="delete" class="btn btn-danger" data-entity="<?php echo $this->aVars['entityName'];?>" data-pk="<?php echo $oEntity->getId(); ?>">Supprimer</button></td>
+      </tr>
+      <?php endforeach;?> 
+    </table>
+    <?php else: ?>
+    <div class="alert alert-info" role="alert">Aucunes données trouvées</div>
+    <?php endif;?>
+    <div>
+      <form class="form-inline"  action="<?php echo HTML_ROOT_PATH ;?>admin/do_save" method="POST" name="update_<?php echo $this->aVars['entityName'];?>">
+        <div class="form-group">
+          <input type="hidden" name="entity_name" value="<?php echo $this->aVars['entityName'];?>"/> 
+          <div class="input-group">
+            <span class="input-group-addon"><strong>Nouveau <?php echo $this->aVars['entityName'];?> :</strong></span>
+            <input type="text" class="form-control" id="label" name="label" placeholder="Nouveau <?php echo $this->aVars['entityName'];?>">
+            <span class="input-group-addon btn btn-danger" id="submit">Enregistrer</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

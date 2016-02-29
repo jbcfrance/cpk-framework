@@ -1,0 +1,181 @@
+<fieldset>
+  <input type='hidden' name="current_step" value="2" />
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Product Origin :</strong></span>
+      <input type="text" class="form-control" name="product_origin" placeholder="Product Origin">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Currency :</strong></span>
+      <select name="currency" class="form-control chosen-select col-sm-5">
+        <option value="">Choose... </option>
+        <?php foreach($this->aVars['aCurrencyList'] as $vCurrency): ?>
+        <option  value="<?php echo $vCurrency['CURRENCY_NAME']; ?>"><?php echo $vCurrency['CURRENCY_SIGLE']; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Port of Loading :</strong></span>
+      <select name="port_loading" class="form-control chosen-select col-sm-5" required>
+        <option value="">Choose... </option>
+        <?php foreach($this->aVars['aPortLoadingList'] as $vPoL): ?>
+        <option  value="<?php echo $vPoL['PORT_ID']; ?>"><?php echo $vPoL['PORT_NAME']; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Port of Destination :</strong></span>
+      <select name="port_destination" class="form-control chosen-select col-sm-5" required>
+        <option value="">Choose... </option>
+        <?php foreach($this->aVars['aPortDestinationList'] as $vPoD): ?>
+        <option  value="<?php echo $vPoD['PORT_ID']; ?>"><?php echo $vPoD['PORT_NAME']; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong><?php echo $this->aVars['CCSDatas']->{'opco'}->{'value'}; ?> Delivery location :</strong></span>
+      <select name="delivery_location" class="form-control chosen-select col-sm-5" required>
+        <option value="">Choose... </option>
+        <?php foreach($this->aVars['aDepotByOpco'] as $vDepot): ?>
+        <option  value="<?php echo $vDepot['DEPOT_NAME']; ?>"><?php echo $vDepot['DEPOT_SHORTNAME']; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <label for="consolidation"></label>
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Consolidation n° :</strong></span>
+      <input type="text" class="form-control" name="consolidation" placeholder="Consolidation n°">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <label for="earliest_receipt_date"></label>
+    <div class="input-group col-sm-8 col-sm-offset-2" data-date-format="dd-mm-yyyy">
+      <span class="input-group-addon"><strong>Earliest Receipt Date :</strong></span>
+      <input type="text" class="form-control" name="earliest_receipt_date" placeholder="Earliest Receipt Date">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+
+    <div class="input-group col-sm-8 col-sm-offset-2" data-date-format="dd-mm-yyyy">
+
+      <span class="input-group-addon"><strong>Lastest Receipt Date :</strong></span>
+      <input type="text" class="form-control" name="lastest_receipt_date" placeholder="Lastest Receipt Date">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+
+    <div class="input-group col-sm-8 col-sm-offset-2" data-date-format="dd-mm-yyyy">
+
+      <span class="input-group-addon"><strong>Estimated Time of Arrival :</strong></span>
+      <input type="text" class="form-control" name="estimated_time_of_arrival" placeholder="Estimated Time of Arrival">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Payment Terms :</strong></span>
+      <select name="payment_terms" class="form-control chosen-select col-sm-5">
+        <option value="">Choose... </option>
+        <option value="LC at sight">LC at sight</option>  
+        <option value="LC at 30 days">LC at 30 days</option>
+        <option value="LC at 45 days">LC at 45 days</option>
+        <option value="LC at 60 days">LC at 60 days</option>
+        <option value="LC at 90 days">LC at 90 days</option>
+        <option value="T/T at sight">T/T at sight</option>
+        <option value="T/T at 5 days">T/T at 5 days</option>
+        <option value="T/T at 7 days">T/T at 7 days</option>
+        <option value="T/T at 10 days">T/T at 10 days</option>
+        <option value="T/T at 14 days">T/T at 14 days</option>
+        <option value="T/T at 20 days">T/T at 20 days</option>
+        <option value="T/T at 30 days">T/T at 30 days</option>
+        <option value="T/T at 40 days">T/T at 40 days</option>
+        <option value="T/T at 45 days">T/T at 45 days</option>
+        <option value="T/T at 60 days">T/T at 60 days</option>
+        <option value="T/T at 90 days">T/T at 90 days</option>
+        <option value="Open account">Open account</option>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+
+
+
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Partial Shipments :</strong></span>
+      <div class=" btn-group-justified">
+        <label class="btn btn-default">
+          <input type="radio" value="yes" name="partial_shipments"> Yes
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" value="no" name="partial_shipments"> No
+        </label>
+      </div>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+
+
+
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>QC Applicable :</strong></span>
+      <div class=" btn-group-justified">
+        <label class="btn btn-default">
+          <input type="radio" value="yes" name="qc_applicable"> Yes
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" value="no" name="qc_applicable"> No
+        </label>
+      </div>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Additional conditions :</strong></span>
+      <div class=" btn-group-justified">
+        <label class="btn btn-default">
+          <input type="radio" value="yes" name="additional_conditions"> Yes
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" value="no" name="additional_conditions"> No
+        </label>
+      </div>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+</fieldset>

@@ -1,0 +1,77 @@
+<fieldset>
+  <input type='hidden' name="current_step" value="1" />
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Type de CCS :</strong></span>
+      <select name="typeOfCcs" class="form-control form_validation col-sm-5" required minlength="1">
+        <option value="">Choose... </option>
+        <option  value="ccs_direct">CCS Direct</option>
+        <option  value="ccs_consolidated">CCS Consolidated</option>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"><span class="glyphicon " aria-hidden="true"></span></span>
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Opco :</strong></span>
+      <select name="opco" class="form-control form_validation col-sm-5 " required minlength="1">
+        <option value="">Choose... </option>
+        <?php foreach($this->aVars['aOpcoList'] as $vOpco): ?>
+        <option  value="<?php echo $vOpco['OPCO_NAME']; ?>"><?php echo $vOpco['OPCO_NAME']; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"><span class="glyphicon " aria-hidden="true"></span></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Category :</strong></span>
+      <select name="category" class="form-control form_validation col-sm-5" required minlength="1">
+        <option value="">Choose... </option>
+        <?php foreach($this->aVars['aCategoryList'] as $vCat): ?>
+        <option  value="<?php echo $vCat['CCS_CATEGORY_NAME']; ?>"><?php echo $vCat['CCS_CATEGORY_NAME']; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"><span class="glyphicon " aria-hidden="true"></span></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Vendor :</strong></span>
+      <select name="vendor" class="form-control form_validation col-sm-5" required minlength="1">
+        <option value="">Choose... </option>
+        <?php foreach($this->aVars['aVendorList'] as $vVendor): ?>
+        <option  value="<?php echo $vVendor['VENDOR_CODE']; ?>"><?php echo $vVendor['VENDOR_NAME']; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"><span class="glyphicon " aria-hidden="true"></span></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Transport :</strong></span>
+      <select name="vendor" class="form-control form_validation col-sm-5" required minlength="1">
+        <option value="">Choose... </option>
+        <?php foreach($this->aVars['aTransportList'] as $vTransport): ?>
+        <option  value="<?php echo $vTransport; ?>"><?php echo $vTransport; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"><span class="glyphicon " aria-hidden="true"></span></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">			
+      <span class="input-group-addon"><strong>Agreed DC Delivery Week N°:</strong></span>
+      <select name="delivery_year" class="form-control form_validation" required minlength="1">
+        <option  value="<?php echo date('Y')-1; ?>"><?php echo date('Y')-1; ?></option>
+        <option  value="<?php echo date('Y'); ?>" checked><?php echo date('Y'); ?></option>
+        <option  value="<?php echo date('Y')+1; ?>"><?php echo date('Y')+1; ?></option>
+      </select>
+      <input type="number" min='1' max='53' class="form-control form_validation" name="delivery_week" required placeholder="Week">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"><span class="glyphicon " aria-hidden="true"></span></span>
+    </div>
+  </div>
+
+</fieldset>

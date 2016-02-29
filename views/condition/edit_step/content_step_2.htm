@@ -1,0 +1,91 @@
+<fieldset>
+  <input type='hidden' name="current_step" value="2" />
+  <input type='hidden' name="contrat_file"  class="form-control" value="" />
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">Joindre le contrat PDF</h4>
+    </div>
+    <div class="panel-body">
+      <form id="fileupload_contrat" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
+        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+        <div class="row fileupload-buttonbar">
+          <div class="col-lg-7">
+            <!-- The fileinput-button span is used to style the file input field as button -->
+            <span class="btn btn-success fileinput-button">
+              <i class="glyphicon glyphicon-plus"></i>
+              <span>Add files...</span>
+              <input type="file" name="files[]" multiple>
+            </span>
+            <button type="submit" class="btn btn-primary start">
+              <i class="glyphicon glyphicon-upload"></i>
+              <span>Start upload</span>
+            </button>
+            <button type="reset" class="btn btn-warning cancel">
+              <i class="glyphicon glyphicon-ban-circle"></i>
+              <span>Cancel upload</span>
+            </button>
+            <button type="button" class="btn btn-danger delete">
+              <i class="glyphicon glyphicon-trash"></i>
+              <span>Delete</span>
+            </button>
+            <input type="checkbox" class="toggle">
+            <!-- The global file processing state -->
+            <span class="fileupload-process"></span>
+          </div>
+          <!-- The global progress state -->
+          <div class="col-lg-5 fileupload-progress fade">
+            <!-- The global progress bar -->
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+            </div>
+            <!-- The extended global progress state -->
+            <div class="progress-extended">&nbsp;</div>
+          </div>
+        </div>
+        <!-- The table listing the files available for upload/download -->
+        <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+      </form>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon"><strong>Libellé du contrat / opération :</strong></span>
+      <textarea class="form-control" style="height:150px;"></textarea>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+
+
+
+
+
+</fieldset>
+
+<? /*
+
+16. (C016) Contrat OUI / NON. Si pdf attaché = oui sinon non
+17. (C017) Nature du contrat (CPV, Coopération commerciale, trade marketing) 
+18. (C018) Libellé du contrat ou description de l’opération (champ libre et non limité) = libellé de l’action trade commune et connue de tous (YMAG, destination innovation, Soirée VIP, Lancement HUAWEI, NAO,…) Sert à facturer et reprend le contrat. Libellé figurant sur le contrat juridique.
+19. (C019) le contrat 
+o   (C020) Date de formalisation du contrat voir Haiet (date signature ?) redondant avec oui/non contrat 
+o   (C021) Date début et fin de l’opération du contrat
+o   (C022) Numéro interne du fournisseur du contrat
+o   (C023) Conditions de règlement (délai de paiement)
+o   (C024) Scan (possibilité d’attacher et de stocker des pdf afin de les consulter)
+20. (C025) Justificatif(s) obligatoire(s) : OUI / NON
+21. (C026) Justif des opérations du contrat : pièce jointe en pdf à la charge des CPT et CPN (voir des liens url)
+22. (C027) Date de démarrage du plan = opérationnel (permet de faire les cut off) : à rapprocher de la date de début de l’opération figurant sur le contrat JJ/MM/AAAA. Possibilité de faire des tris par date 
+23. (C028) Date d’échéance du plan pour paiement opérationnel et cut off : à rapprocher de la date de fin de l’opération figurant sur le contrat JJ/MM/AAAA. Possibilité de faire des tris par date
+24. (C029) Montant du contrat reçu  négocié (HT), pouvant être différent d’origine (cf plan commercial) 
+25. (C001) Ecart entre montant initial (plan de com) et contrat signé (HT) : zone de calcul automatique
+26. (C030) Identifiant de saisie et Date de mise à jour. Opération clef à définir afin de mettre une date en face pour un suivi de consultation. (facturé ? réception du contrat ?...)
+27. (C031) Répartition du montant de l’opération en fonction affectation analytique ; (libellé + code de section budgétaire). Un contrat peut avoir plusieurs affectations budgétaires
+o   (C032) Ecart de marge (valeur à saisir)+ mois (indiquer le mois concerné)
+o   (C033) PRMP (valeur à saisir)+ mois (indiquer le mois concerné)
+o    (C034) PRA (valeur à saisir)+ mois (indiquer le mois concerné)
+o    (C035) Imputation (champ à administrer à partir d’une liste). Voir Marine pour simplification (valeur à saisir)+ mois (indiquer le mois concerné)
+
+28. (C036) Dossier complet : Oui/NON contrat attaché, preuve d’exécution et champs obligatoires renseignés = oui
+
+*/ ?>

@@ -1,0 +1,136 @@
+<fieldset>
+  <input type='hidden' name="current_step" value="1" />
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>ID de l’opération :</strong></span>
+      <input type="text" class="form-control" name="id_operation" placeholder="ID de l’opération" readonly>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Type de Nego :</strong></span>
+      <select name="typeOfNego" class="form-control form_validation col-sm-5" required minlength="1">
+        <option value="">Choose... </option>
+        <option  value="trade">Trade</option>
+        <option  value="cp">CP</option>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"><span class="glyphicon " aria-hidden="true"></span></span>
+    </div>
+  </div>
+
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Sous-nego :</strong></span>
+      <select name="sous_nego" class="form-control form_validation col-sm-5" required minlength="1">
+        <option value="">Choose... </option>
+        <option  value="logistique">logistique</option>
+        <option  value="merch">merch</option>
+        <option  value="convention">convention</option>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"><span class="glyphicon " aria-hidden="true"></span></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Chef de produit national :</strong></span>
+      <input type="text" class="form-control" name="chef_prod_nat" placeholder="Chef de produit national">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Département :</strong></span>
+      <select name="departements" class="form-control form_validation col-sm-5 ">
+        <option value="">Choose... </option>
+        <?php foreach($this->aVars['aDepartementsListe'] as $vDept): ?>
+        <option  value="<?php echo $vDept['D_ID']; ?>"><?php echo $vDept['D_LABEL']; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <span class="input-group-addon addon-feedback" aria-hidden="true"><span class="glyphicon " aria-hidden="true"></span></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Famille NCG :</strong></span>
+      <input type="text" class="form-control" name="famille_ncg" placeholder="Famille NCG">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Fournisseur :</strong></span>
+      <input type="text" class="form-control" name="fournisseur" placeholder="Fournisseur">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Marque :</strong></span>
+      <input type="text" class="form-control" name="marque" placeholder="Marque">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Groupe de marques :</strong></span>
+      <input type="text" class="form-control" name="group_marque" placeholder="Groupe de marques">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Codic :</strong></span>
+      <input type="text" class="form-control" name="codic" placeholder="Codic">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Libellé de l’action :</strong></span>
+      <input type="text" class="form-control" name="codic" placeholder="Libellé de l’action">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Plan Com (HT):</strong></span>
+      <input type="text" class="form-control" name="plan_com" placeholder="Plan Com">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Date début négociation :</strong></span>
+      <input type="text" class="form-control" name="date_debut_nego" placeholder="Date début négociation">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="form-group col-sm-10 col-sm-offset-1">
+    <div class="input-group col-sm-8 col-sm-offset-2">
+      <span class="input-group-addon"><strong>Date d’envoi du plan :</strong></span>
+      <input type="text" class="form-control" name="date_envoi_nego" placeholder="Date d’envoi du plan">
+      <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+    </div>
+  </div>    
+</fieldset>
+
+<? /*
+1.  (C001) ID de l’opération: numéro de chrono permettant d’identifier l’opération servant à l’ensemble des acteurs. Champ s’incrémentant seul
+2.  (C002) Type de négo (Trade, CP,…). Pour faire tri. Qui suit l’opération
+3.  (C003) Sous négo (logistique, merch, convention, …)
+4.  (C004) Chef de produit national : chef de produit concerné par l’opération et valideur du contrat (donnée PCM)
+5.  (C005) Le Département concerné : (MM, GEM, ….)
+6.  (C006) Famille NCG concernée. Quand le codic est renseigné s’incrémente tout seul (Donnée PCM – OPCO famille P180).
+7.  (C007) Fournisseur: Entité juridique du contrat (Saisi par Trade – Validé par Controlling). Il s’agira du n°SAP + code tiers SAP + libellé  identification du code tiers SAP par le CSP CTB fournisseur.
+8.  (C008) Marque concernée (élément obligatoire) exemple TEFAL, Apple beats
+9.  (C009) Groupe de marques concerné exemple Groupe SEB, Apple
+10. (C010) Codic champ non obligatoire
+11. (C011) Référence commerciale (Champ P008 de PCM) champ non obligatoire sauf si codic renseigné. Champ adressé en automatique dès que codic renseigné
+12. (C012) Libellé de l’action = Nature du Plan « Produit » (exple : Plan Q1 / ACER) voir Trade. C’est la nature de l’opération que Trade monte avec le fournisseur. Ce champ doit être libre. Description interne. Champ saisi par le CPN ou CPT
+13. (C013) Plan Com = Montant HT, négocié et validé par le fournisseur en début de négo
+14. (C014) Date début négociation avec fournisseur (date du 1er mail échangé) voir Haiet
+15. (C015) la date d’envoi du plan au fournisseur Haiet
+*/ ?>

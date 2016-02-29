@@ -1,0 +1,429 @@
+<input type='hidden' name="current_step" value="4" />
+<div class="col-xs-4">
+  <table class="table table-bordered table-freight">
+    <tr>
+      <th>FCL</th>
+      <th>YES</th>
+    </tr>
+    <?php foreach($this->aVars['container'] as $kContainer => $vContainer): ?>
+    <tr>
+      <td><?php echo $vContainer['CONTAINER_TYPE']; ?></td>
+      <td class="col-xs-6">
+        <div class="form-group container_freight">
+          <input type="number" min="0" step="1" value="" class="form-control input-sm qty_container container_<?php echo $vContainer['CONTAINER_ID']; ?>" name="qty_container_<?php echo $vContainer['CONTAINER_ID']; ?>" />
+          <input type="hidden" value="<?php echo $this->aVars['container'][$kContainer]['CONTAINER_RECO_LOAD_VOL']; ?>" name="vol_container_<?php echo $vContainer['CONTAINER_ID']; ?>" class="vol_container container_<?php echo $vContainer['CONTAINER_ID']; ?>"/>
+          <input type="hidden" value="<?php echo $this->aVars['container'][$kContainer]['CONTAINER_COST']['AMOUNT']; ?>" name="cost_container_<?php echo $vContainer['CONTAINER_ID']; ?>" class="cost_container container_<?php echo $vContainer['CONTAINER_ID']; ?>" data-currency="<?php echo $this->aVars['container'][$kContainer]['CONTAINER_COST']['CURRENCY']['CURRENCY_NAME']; ?>" />
+          <input type="hidden" value="<?php echo $this->aVars['container'][$kContainer]['CONTAINER_BAF_ERS_SUEZ']['AMOUNT']; ?>" name="baf_container_<?php echo $vContainer['CONTAINER_ID']; ?>" class="baf_container container_<?php echo $vContainer['CONTAINER_ID']; ?>" data-currency="<?php echo $this->aVars['container'][$kContainer]['CONTAINER_BAF_ERS_SUEZ']['CURRENCY']['CURRENCY_NAME']; ?>"/>
+          <input type="hidden" value="<?php echo $this->aVars['container'][$kContainer]['CONTAINER_CAF']['AMOUNT']; ?>" name="caf_container_<?php echo $vContainer['CONTAINER_ID']; ?>" class="caf_container container_<?php echo $vContainer['CONTAINER_ID']; ?>" data-currency="<?php echo $this->aVars['container'][$kContainer]['CONTAINER_CAF']['CURRENCY']['CURRENCY_NAME']; ?>"/>
+          <input type="hidden" value="<?php echo $this->aVars['container'][$kContainer]['CONTAINER_MANAGEMENT_FEE']['AMOUNT']; ?>" name="man_fee_container_<?php echo $vContainer['CONTAINER_ID']; ?>" class="man_fee_container container_<?php echo $vContainer['CONTAINER_ID']; ?>" data-currency="<?php echo $this->aVars['container'][$kContainer]['CONTAINER_MANAGEMENT_FEE']['CURRENCY']['CURRENCY_NAME']; ?>"/>
+          <input type="hidden" value="<?php echo $this->aVars['container'][$kContainer]['CONTAINER_PORT_DISCHARGE']['AMOUNT']; ?>" name="pod_container_<?php echo $vContainer['CONTAINER_ID']; ?>" class="pod_container container_<?php echo $vContainer['CONTAINER_ID']; ?>" data-currency="<?php echo $this->aVars['container'][$kContainer]['CONTAINER_PORT_DISCHARGE']['CURRENCY']['CURRENCY_NAME']; ?>"/>
+        </div>
+      </td>
+    </tr>
+    <?php endforeach; ?>
+    <tr>
+      <td colspan="2"><span id="total_container">0</span> container
+        <input type="hidden" value="1" readonly class="form-control input-sm " name="total_container" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><span id="total_m3">0</span> m3 (max)
+        <input type="hidden" value="1" readonly class="form-control input-sm " name="total_m3" />
+      </td>
+    </tr>
+  </table>
+
+  <table class="table table-bordered ">
+    <tr>
+      <th colspan="2">Exchange Rates</th>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon">&euro;</span>
+            <input type="text" value="1" readonly class="form-control input-sm no_validation" name="" />
+
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="1.08200" readonly class="form-control input-sm " name="rate_euro_to_dollars" />
+            <span class="input-group-addon">$</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon">&euro;</span>
+            <input type="text" value="1" readonly class="form-control input-sm no_validation" name="" />
+
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="rate_euro_to_pounds" />
+            <span class="input-group-addon">£</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon">£</span>
+            <input type="text" value="1" readonly class="form-control input-sm no_validation" name="" />
+
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="rate_pounds_to_dollars" />
+            <span class="input-group-addon">$</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button type="button" class="btn btn-warning btn-xs" id="reset_exchange_rates">Reset rates</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-success btn-xs" id="mod_exchange_rates">Modify rates</button>
+        <button type="button" class="btn btn-danger btn-xs" id="valid_exchange_rates" style="display:none;">Save rates</button>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="col-xs-8">
+  <table class="table table-bordered table-freight">
+    <tr>
+      <td></td>
+      <th>FREIGHT CHARGES</th>
+      <th>In Currency</th>
+      <th>in EUR</th>
+    </tr>
+    <tr>
+      <td>SEA</td>
+      <th>Freight</th>
+      <td class="col-xs-4">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="freight_currency"  data-currency="<?php echo $this->aVars['container'][0]['CONTAINER_COST']['CURRENCY']['CURRENCY_NAME'];?>" data-unitaire="0"/>
+            <span class="input-group-addon"><?php echo $this->aVars['container'][0]['CONTAINER_COST']['CURRENCY']['CURRENCY_HTML'];?></span>
+          </div>
+        </div>
+      </td>
+      <td class="col-xs-4">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="freight_euro" />
+            <span class="input-group-addon">&euro;</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Total &euro;</td>
+      <th>BAF + ERS + SUEZ</th>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="baf_ers_suez_currency"  data-currency="<?php echo $this->aVars['container'][0]['CONTAINER_BAF_ERS_SUEZ']['CURRENCY']['CURRENCY_NAME'];?>" data-unitaire="0"/>
+            <span class="input-group-addon"><?php echo $this->aVars['container'][0]['CONTAINER_BAF_ERS_SUEZ']['CURRENCY']['CURRENCY_HTML'];?></span>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="baf_ers_suez_euro" />
+            <span class="input-group-addon">&euro;</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><span id="total_sea"></span><input type="hidden" value="1" readonly class="form-control input-sm " name="total_sea" /></td>
+      <th>CAF (0,0 % of Freight)</th>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="caf_currency"  data-currency="<?php echo $this->aVars['container'][0]['CONTAINER_CAF']['CURRENCY']['CURRENCY_NAME'];?>" data-unitaire="0"/>
+            <span class="input-group-addon"><?php echo $this->aVars['container'][0]['CONTAINER_CAF']['CURRENCY']['CURRENCY_HTML'];?></span>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="caf_euro" />
+            <span class="input-group-addon">&euro;</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <th>Terminal Handling Charges</th>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="thc_currency"  data-currency="<?php echo $this->aVars['aTermHandlingCharges']['CURRENCY']['CURRENCY_NAME'];?>" data-unitaire="<?php echo $this->aVars['aTermHandlingCharges']['AMOUNT'];?>"/>
+            <span class="input-group-addon"><?php echo $this->aVars['aTermHandlingCharges']['CURRENCY']['CURRENCY_HTML'];?></span>
+          </div>
+          <input type="hidden" value="<?php echo $this->aVars['aTermHandlingCharges']['AMOUNT'];?>" name="thc_by_container_currency" />
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="thc_euro" />
+            <span class="input-group-addon">&euro;</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>OTHER</td>
+      <th>Bill of Landing</th>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="bal_currency"  data-currency="<?php echo $this->aVars['aBillOfLanding']['CURRENCY']['CURRENCY_NAME'];?>" data-unitaire="<?php echo $this->aVars['aBillOfLanding']['AMOUNT'];?>"/>
+            <span class="input-group-addon"><?php echo $this->aVars['aBillOfLanding']['CURRENCY']['CURRENCY_HTML'];?></span>
+          </div>
+          <input type="hidden" value="<?php echo $this->aVars['aBillOfLanding']['AMOUNT'];?>" name="bal_by_container_currency" />
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="bal_euro" />
+            <span class="input-group-addon">&euro;</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Total &euro;</td>
+      <th>Custom clearance</th>
+      <td class="col-xs-3">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="custom_currency" data-currency="<?php echo $this->aVars['aCustomClearance']['CURRENCY']['CURRENCY_NAME'];?>" data-unitaire="<?php echo $this->aVars['aCustomClearance']['AMOUNT'];?>"/>
+            <span class="input-group-addon"><?php echo $this->aVars['aCustomClearance']['CURRENCY']['CURRENCY_HTML'];?></span>
+          </div>
+          <input type="hidden" value="<?php echo $this->aVars['aCustomClearance']['AMOUNT'];?>" name="custom_by_container_currency" />
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="custom_euro" />
+            <span class="input-group-addon">&euro;</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><span id="total_other"></span><input type="hidden" value="1" readonly class="form-control input-sm " name="total_other" /></td>
+      <th>Management Fee</th>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="manag_fee_currency"  data-currency="<?php echo $this->aVars['aManagementFee']['CURRENCY']['CURRENCY_NAME'];?>" data-unitaire="<?php echo $this->aVars['aManagementFee']['AMOUNT'];?>"/>
+            <span class="input-group-addon"><?php echo $this->aVars['aManagementFee']['CURRENCY']['CURRENCY_HTML'];?></span>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="manag_fee_euro" />
+            <span class="input-group-addon">&euro;</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <th>Terminal Sec. + Carrier Sec.</th>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="term_sec_currency"  data-currency="<?php echo $this->aVars['aTerminalSec']['CURRENCY']['CURRENCY_NAME'];?>" data-unitaire="<?php echo $this->aVars['aTerminalSec']['AMOUNT'];?>"/>
+            <span class="input-group-addon"><?php echo $this->aVars['aTerminalSec']['CURRENCY']['CURRENCY_HTML'];?></span>
+            <input type="hidden" value="<?php echo $this->aVars['aTerminalSec']['AMOUNT'];?>" name="term_sec_by_container_currency" />
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="term_sec_euro" />
+            <span class="input-group-addon">&euro;</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <th>Port of Discharge ===> Opco</th>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="pod_currency"  data-currency="<?php echo $this->aVars['aPortDischarge']['CURRENCY']['CURRENCY_NAME'];?>" data-unitaire="<?php echo $this->aVars['aPortDischarge']['AMOUNT'];?>"/>
+            <span class="input-group-addon"><?php echo $this->aVars['aPortDischarge']['CURRENCY']['CURRENCY_HTML'];?></span>
+            <input type="hidden" value="<?php echo $this->aVars['aPortDischarge']['AMOUNT'];?>" name="pod_by_container_currency" />
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" value="" readonly class="form-control input-sm" name="pod_euro" />
+            <span class="input-group-addon">&euro;</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+  </table>
+</div>
+<div class="col-xs-12">
+  <div class="alert alert-success col-xs-offset-2 col-xs-8" role="alert"  id="container_full_percent">
+    Container(s) filed at <span></span> %
+  </div>
+  <table class="table table-bordered table-products">
+    <thead>
+      <tr>
+        <th>
+          Products
+        </th>
+        <?php for ($i=1;$i<= $this->aVars['NB_PRODUCT_MAX']; $i++ ): ?>
+        <th class="product_header" id="<?php echo $i; ?>"><?php echo $this->aVars['aProduct_'.$i]['PI_MODEL']; ?></th>
+        <?php endfor;?>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach($this->aVars['aStructureTable'] as $k =>$vTableLine) : ?>
+      <tr <?php if(true === $vTableLine['hidden']) : ?> style="display:none;" <?php endif;?> >
+
+        <th><?php echo $vTableLine['header']; ?></th>
+        <?php for ($i=1;$i<= $this->aVars['NB_PRODUCT_MAX']; $i++ ): ?>
+        <td class="product_<?php echo $i; ?>">
+
+          <div class="form-group">
+            <?php if($vTableLine['addon'] != ''): ?>
+            <div class="input-group">
+              <input type="text" name="<?php echo $vTableLine['field_name']; ?>_<?php echo $i;?>" class="form-control input-sm" <?php if($vTableLine['readonly'] === true OR $this->aVars['aProduct_'.$i]['PI_MODEL'] == ''): ?> readonly <?php endif;?> <?php if($vTableLine['required'] === true && $this->aVars['aProduct_'.$i]['PI_MODEL'] != ''): ?> required <?php endif;?> <?php foreach($vTableLine['data'] as $kData=>$vData): ?> data-<?php echo $kData; ?>="<?php echo $vData; ?>" <?php endforeach; ?> <?php if($vTableLine['source_bdd'] !== '' ): ?> value="<?php echo $this->aVars['aProduct_'.$i][$vTableLine['source_bdd']]; ?>" <?php else: ?> value="0"<?php endif;?>/> 
+                     <span class="input-group-addon"><?php echo $vTableLine['addon']; ?></span>
+            </div>
+            <?php else: ?>
+            <input type="text" name="<?php echo $vTableLine['field_name']; ?>_<?php echo $i;?>" class="form-control input-sm"  <?php if($vTableLine['readonly'] === true OR $this->aVars['aProduct_'.$i]['PI_MODEL'] == ''): ?> readonly <?php endif;?> <?php if($vTableLine['required'] === true && $this->aVars['aProduct_'.$i]['PI_MODEL'] != ''): ?> required <?php endif;?> <?php foreach($vTableLine['data'] as $kData=>$vData): ?> data-<?php echo $kData; ?>="<?php echo $vData; ?>" <?php endforeach; ?> <?php if($vTableLine['source_bdd'] !== '' ): ?> value="<?php echo $this->aVars['aProduct_'.$i][$vTableLine['source_bdd']]; ?>" <?php endif;?>/> 
+                   <?php endif;?>
+
+          </div>
+        </td>
+        <?php endfor;?>
+      </tr>
+
+      <?php endforeach; ?>
+      <tr>
+        <td colspan="<?php echo $this->aVars['NB_PRODUCT_MAX']+1; ?>" style="background-color:#CCC;">&nbsp;</td>
+      </tr>
+      <?php foreach($this->aVars['aStructureTableTotaux'] as $k =>$vTableLine) : ?>
+      <tr <?php if(true === $vTableLine['hidden']) : ?> style="display:none;" <?php endif;?> >
+
+        <th><?php echo $vTableLine['header']; ?></th>
+        <?php for ($i=1;$i<= $this->aVars['NB_PRODUCT_MAX']; $i++ ): ?>
+        <td class="product_<?php echo $i; ?>">
+
+          <div class="form-group">
+            <?php if($vTableLine['addon'] != ''): ?>
+            <div class="input-group">
+              <input type="text" name="<?php echo $vTableLine['field_name']; ?>_<?php echo $i;?>" class="form-control input-sm" <?php if($vTableLine['readonly'] === true OR $this->aVars['aProduct_'.$i]['PI_MODEL'] == ''): ?> readonly <?php endif;?> <?php if($vTableLine['required'] === true && $this->aVars['aProduct_'.$i]['PI_MODEL'] != ''): ?> required <?php endif;?> <?php foreach($vTableLine['data'] as $kData=>$vData): ?> data-<?php echo $kData; ?>="<?php echo $vData; ?>" <?php endforeach; ?> <?php if($vTableLine['source_bdd'] !== '' ): ?> value="<?php echo $this->aVars['aProduct_'.$i][$vTableLine['source_bdd']]; ?>" <?php else: ?> value="0"<?php endif;?>/> 
+                     <span class="input-group-addon"><?php echo $vTableLine['addon']; ?></span>
+            </div>
+            <?php else: ?>
+            <input type="text" name="<?php echo $vTableLine['field_name']; ?>_<?php echo $i;?>" class="form-control input-sm"  <?php if($vTableLine['readonly'] === true OR $this->aVars['aProduct_'.$i]['PI_MODEL'] == ''): ?> readonly <?php endif;?> <?php if($vTableLine['required'] === true && $this->aVars['aProduct_'.$i]['PI_MODEL'] != ''): ?> required <?php endif;?> <?php foreach($vTableLine['data'] as $kData=>$vData): ?> data-<?php echo $kData; ?>="<?php echo $vData; ?>" <?php endforeach; ?> <?php if($vTableLine['source_bdd'] !== '' ): ?> value="<?php echo $this->aVars['aProduct_'.$i][$vTableLine['source_bdd']]; ?>" <?php endif;?>/> 
+                   <?php endif;?>
+
+          </div>
+        </td>
+        <?php endfor;?>
+      </tr>
+
+      <?php endforeach; ?>
+      <tr>
+        <td colspan="<?php echo $this->aVars['NB_PRODUCT_MAX']+1; ?>" style="background-color:#CCC;">&nbsp;</td>
+      </tr>
+      <tr>
+        <th>TOTAL ORDER VALUE</th>
+        <td>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" value="" readonly class="form-control input-sm" name="somme_total_costs" />
+              <span class="input-group-addon">&euro;</span>
+            </div>
+          </div>
+        </td>
+        <td colspan="<?php echo $this->aVars['NB_PRODUCT_MAX']-3; ?>"></td>
+        <th>Total Order Value FOB</th>
+        <td>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" value="" readonly class="form-control input-sm" name="somme_total_fob" />
+              <span class="input-group-addon">$</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>TOTAL RTS VALUE</th>
+        <td>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" value="" readonly class="form-control input-sm" name="somme_total_rts" />
+              <span class="input-group-addon">&euro;</span>
+            </div>
+          </div>
+        </td>
+        <?php if($this->aVars['NB_PRODUCT_MAX'] > 5): ?>
+        <td colspan="<?php echo $this->aVars['NB_PRODUCT_MAX']-5; ?>"></td>
+        <?php endif ;?>
+        <td colspan="2">
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon">Total Qty:</span>
+              <input type="text" value="" readonly class="form-control input-sm" name="somme_total_quantity" />
+            </div>
+          </div>
+        </td>
+        <th>==> converted in USD</th>
+        <td>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" value="" readonly class="form-control input-sm" name="somme_total_fob_currency" />
+              <span class="input-group-addon">&euro;</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

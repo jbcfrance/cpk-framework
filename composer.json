@@ -1,0 +1,7 @@
+{
+  "name": "jbcfrance",
+  "require": {
+    "doctrine/orm": "2.3",
+    "doctrine/data-fixtures" : "*"
+  }
+}

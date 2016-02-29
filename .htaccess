@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymlinks
+RewriteEngine on
+RewriteBase /cpk-framework/
+
+RewriteRule .*\.php.*$ index.php [L]
+RewriteRule ^([^.]*)$ index.php [L]
+</IfModule>

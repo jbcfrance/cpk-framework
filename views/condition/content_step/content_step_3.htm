@@ -1,0 +1,166 @@
+<div class="table-responsive">
+  <input type='hidden' name="current_step" value="3" />
+  <?php foreach($this->aVars['aProductsList'] as $kProduct => $vProduct): ?>
+  <input type="hidden" name="product_<?php echo $vProduct['PI_PRODUCT_NBR']; ?>" value='<?php echo json_encode($this->aVars['aProductsList'][$kProduct]) ?>' />
+         <?php endforeach; ?>
+
+         <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th rowspan="2">
+          Selection du produit
+        </th>
+        <th>Product 1</th>
+        <th>Product 2</th>
+        <th>Product 3</th>
+        <th>Product 4</th>
+        <th>Product 5</th>
+      </tr>
+      <tr>
+
+        <th>
+          <select name="product_1" class="form-control col-sm-5" required>
+            <option value="">Choose... </option>
+            <?php foreach($this->aVars['aProductsList'] as $vProduct): ?>
+            <option  value="<?php echo $vProduct['PI_PRODUCT_NBR']; ?>"><?php echo $vProduct['PI_MODEL']; ?></option>
+            <?php endforeach; ?>
+          </select>
+        </th>
+        <th>
+          <select name="product_2" class="form-control col-sm-5">
+            <option value="">Choose... </option>
+            <?php foreach($this->aVars['aProductsList'] as $vProduct): ?>
+            <option  value="<?php echo $vProduct['PI_PRODUCT_NBR']; ?>"><?php echo $vProduct['PI_MODEL']; ?></option>
+            <?php endforeach; ?>
+          </select>
+        </th>
+        <th>
+          <select name="product_3" class="form-control col-sm-5">
+            <option value="">Choose... </option>
+            <?php foreach($this->aVars['aProductsList'] as $vProduct): ?>
+            <option  value="<?php echo $vProduct['PI_PRODUCT_NBR']; ?>"><?php echo $vProduct['PI_MODEL']; ?></option>
+            <?php endforeach; ?>
+          </select>
+        </th>
+        <th>
+          <select name="product_4" class="form-control col-sm-5">
+            <option value="">Choose... </option>
+            <?php foreach($this->aVars['aProductsList'] as $vProduct): ?>
+            <option  value="<?php echo $vProduct['PI_PRODUCT_NBR']; ?>"><?php echo $vProduct['PI_MODEL']; ?></option>
+            <?php endforeach; ?>
+          </select>
+        </th>
+        <th>
+          <select name="product_5" class="form-control col-sm-5">
+            <option value="">Choose... </option>
+            <?php foreach($this->aVars['aProductsList'] as $vProduct): ?>
+            <option  value="<?php echo $vProduct['PI_PRODUCT_NBR']; ?>"><?php echo $vProduct['PI_MODEL']; ?></option>
+            <?php endforeach; ?>
+          </select>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>
+          SUB-CATEGORY
+        </th>
+        <td class="product_1"><span id="PI_SUB_CATEGORY"></span></td>
+        <td class="product_2"><span id="PI_SUB_CATEGORY"></span></td>
+        <td class="product_3"><span id="PI_SUB_CATEGORY"></span></td>
+        <td class="product_4"><span id="PI_SUB_CATEGORY"></span></td>
+        <td class="product_5"><span id="PI_SUB_CATEGORY"></span></td>
+      </tr>
+      <tr>
+        <th>
+          CODIC
+        </th>
+        <td class="product_1"><span id="DHD_CODIC"></span></td>
+        <td class="product_2"><span id="DHD_CODIC"></span></td>
+        <td class="product_3"><span id="DHD_CODIC"></span></td>
+        <td class="product_4"><span id="DHD_CODIC"></span></td>
+        <td class="product_5"><span id="DHD_CODIC"></span></td>
+      </tr>
+      <tr>
+        <th>
+          BRAND
+        </th>
+        <td class="product_1"><span id="PI_BRAND"></span></td>
+        <td class="product_2"><span id="PI_BRAND"></span></td>
+        <td class="product_3"><span id="PI_BRAND"></span></td>
+        <td class="product_4"><span id="PI_BRAND"></span></td>
+        <td class="product_5"><span id="PI_BRAND"></span></td>
+      </tr>
+      <tr>
+        <th>
+          MODEL
+        </th>
+        <td class="product_1"><span id="PI_MODEL"></span></td>
+        <td class="product_2"><span id="PI_MODEL"></span></td>
+        <td class="product_3"><span id="PI_MODEL"></span></td>
+        <td class="product_4"><span id="PI_MODEL"></span></td>
+        <td class="product_5"><span id="PI_MODEL"></span></td>
+      </tr>
+      <tr>
+        <th>
+          ITEM DESCRIPTION
+        </th>
+        <td class="product_1"><span id="PI_PRODUCT_DESCR"></span></td>
+        <td class="product_2"><span id="PI_PRODUCT_DESCR"></span></td>
+        <td class="product_3"><span id="PI_PRODUCT_DESCR"></span></td>
+        <td class="product_4"><span id="PI_PRODUCT_DESCR"></span></td>
+        <td class="product_5"><span id="PI_PRODUCT_DESCR"></span></td>
+      </tr>
+      <tr>
+        <th>
+          Outer carton size (cm) H
+        </th>
+        <td class="product_1"><span id="PI_HEIGHT"></span></td>
+        <td class="product_2"><span id="PI_HEIGHT"></span></td>
+        <td class="product_3"><span id="PI_HEIGHT"></span></td>
+        <td class="product_4"><span id="PI_HEIGHT"></span></td>
+        <td class="product_5"><span id="PI_HEIGHT"></span></td>
+      </tr>
+      <tr>
+        <th>
+          Outer carton size (cm) W
+        </th>
+        <td class="product_1"><span id="PI_WIDTH"></span></td>
+        <td class="product_2"><span id="PI_WIDTH"></span></td>
+        <td class="product_3"><span id="PI_WIDTH"></span></td>
+        <td class="product_4"><span id="PI_WIDTH"></span></td>
+        <td class="product_5"><span id="PI_WIDTH"></span></td>
+      </tr>
+      <tr>
+        <th>
+          Outer carton size (cm) D
+        </th>
+        <td class="product_1"><span id="PI_LENGTH"></span></td>
+        <td class="product_2"><span id="PI_LENGTH"></span></td>
+        <td class="product_3"><span id="PI_LENGTH"></span></td>
+        <td class="product_4"><span id="PI_LENGTH"></span></td>
+        <td class="product_5"><span id="PI_LENGTH"></span></td>
+      </tr>
+      <tr>
+        <th>
+          Number of unit(s) per outer carton
+        </th>
+        <td class="product_1"><span id="PI_UNITS_CARTON"></span></td>
+        <td class="product_2"><span id="PI_UNITS_CARTON"></span></td>
+        <td class="product_3"><span id="PI_UNITS_CARTON"></span></td>
+        <td class="product_4"><span id="PI_UNITS_CARTON"></span></td>
+        <td class="product_5"><span id="PI_UNITS_CARTON"></span></td>
+      </tr>
+      <tr>
+        <th>
+          Volume per outer carton (m3)
+        </th>
+        <td class="product_1"><span id="PI_VOLUME"></span></td>
+        <td class="product_2"><span id="PI_VOLUME"></span></td>
+        <td class="product_3"><span id="PI_VOLUME"></span></td>
+        <td class="product_4"><span id="PI_VOLUME"></span></td>
+        <td class="product_5"><span id="PI_VOLUME"></span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

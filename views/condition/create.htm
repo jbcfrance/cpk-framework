@@ -1,0 +1,111 @@
+<div class="panel panel-danger">
+  <div class="panel-heading">Création d'une condition</div>
+  <div class="panel-body">
+    <form name="create_condition" action="<?php echo HTML_ROOT_PATH;?>condition/do_create/" method="POST" > 
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Typologie de l’accord :</strong></span>
+          <select name="contrat_type" class="form-control form_validation col-sm-5">
+            <option value="">Choose... </option>
+            <option  value="cooperation">Coopération</option>
+            <option  value="trade_marketing">Trade marketing</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Libellé de l’action trade :</strong></span>
+          <input type="text" class="form-control" name="negociation_labelAction" placeholder="Label de l'action"/>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Description de l’opération :</strong></span>
+          <textarea name="contrat_label"  class="form-control" style="height:80px;"></textarea>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Département :</strong></span>
+          <select name="departement_id" class="form-control form_validation col-sm-5 ">
+            <option value="">Choose... </option>
+            <?php foreach($this->aVars['aDepartementsListe'] as $vDept): ?>
+            <option  value="<?php echo $vDept->getId(); ?>"><?php echo $vDept->getLabel(); ?></option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Chef de produit :</strong></span>
+          <input type="text" class="form-control" name="negociation_chefProduit" placeholder="Chef de produit"/>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Chef de produit Trade :</strong></span>
+          <input type="text" class="form-control" name="negociation_chefProduitTrade" placeholder="Chef de produit Trade"/>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Famille NCG:</strong></span>
+          <input type="text" class="form-control" name="negociation_famNcg" placeholder="Famille NCG"/>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Montant du plan:</strong></span>
+          <input type="text" class="form-control" name="negociation_planCom" placeholder="Montant du plan"/>
+          <span class="input-group-addon">HT</span>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Fournisseur:</strong></span>
+          <input type="text" class="form-control" name="negociation_codeFournisseurSap" placeholder="Fournisseur (Code SAP + libellé)"/>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Groupe marque:</strong></span>
+          <input type="text" class="form-control" name="negociation_groupMarque" placeholder="Groupe marque"/>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Marque:</strong></span>
+          <input type="text" class="form-control" name="negociation_marque" placeholder="Marque"/>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Type de négociation :</strong></span>
+          <select name="typeNego_id" class="form-control form_validation col-sm-5 ">
+            <option value="">Choose... </option>
+            <?php foreach($this->aVars['aTypeNego'] as $vTNego): ?>
+            <option  value="<?php echo $vTNego->getId(); ?>"><?php echo $vTNego->getLabel(); ?></option>
+            <?php endforeach; ?>
+          </select>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Règle d’imputation des factures:</strong></span>
+          <input type="text" class="form-control" name="negociation_imputationFacture" placeholder="règle d’imputation des factures"/>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Date de fin de l’opération:</strong></span>
+          <input type="text" class="form-control" name="negociation_dateEnvoi" placeholder="Date de fin de l’opération" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class=" col-sm-10">
+          <button type="submit" class="btn btn-danger">Enregistrer la négociation</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

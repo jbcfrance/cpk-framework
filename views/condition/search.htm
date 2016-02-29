@@ -1,0 +1,39 @@
+<div class="panel panel-danger">
+  <div class="panel-heading">Rechercher une condition</div>
+  <div class="panel-body">
+    <form name="search_condition" action="<?php echo HTML_ROOT_PATH;?>condition/do_search/" method="POST" > 
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Libellé de l’action trade :</strong></span>
+          <input type="text" class="form-control" name="label_action" placeholder="Label de l'action"/>
+        </div>
+      </div>
+      <div class="form-group col-sm-12">
+        <div class="input-group col-sm-10 col-sm-offset-1">
+          <span class="input-group-addon"><strong>Typologie de l’accord :</strong></span>
+          <select name="typologie_accord" class="form-control form_validation col-sm-5" required minlength="1">
+            <option value="">Choose... </option>
+            <option  value="cooperation">Coopération</option>
+            <option  value="trade_marketing">Trade marketing</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<?
+/* Search
+•   sur un numéro de dossier
+•   dans la période de date à date
+•   Sur un  fournisseur: saisir  une partie du nom
+•   sur une ou plusieurs marques 
+•   sur un  type demande de règlement : Choisir le type de remboursement.
+•   sur un  chef de produit
+•   Sur un département produit 
+•   sur un Statut de dossier : seulement les Ouvert ou les clôturés
+
+*/
+?>

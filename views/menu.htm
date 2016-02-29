@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<?php echo HTML_ROOT_PATH;?>home/">
+        <img alt="Brand" src="<?php echo HTML_ROOT_PATH;?>web/img/logo-20.png">
+      </a>
+      <a class="navbar-brand" href="<?php echo HTML_ROOT_PATH;?>home/">Apollo</a> 
+
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li <?php if($this->sRequestController=='home'): ?> class="active text-danger" <?php endif;?>>
+          <a href="<?php echo HTML_ROOT_PATH;?>home/">Accueil</a>
+        </li>
+        <li <?php if($this->sRequestController=='user' && $this->aVars['sAction'] == 'todo'): ?> class="active" <?php endif;?>>
+          <a href="<?php echo HTML_ROOT_PATH;?>user/todo/">Reste à faire </a>
+        </li>
+        <li <?php if($this->sRequestController=='condition' && $this->aVars['sAction'] == 'create'): ?> class="active" <?php endif;?> >
+          <a href="<?php echo HTML_ROOT_PATH;?>condition/create/">Créer une condition </a>
+        </li>
+        <li <?php if($this->sRequestController=='condition' && $this->aVars['sAction'] == 'search'): ?> class="active" <?php endif;?>>
+          <a href="<?php echo HTML_ROOT_PATH;?>condition/search/">Rechercher une condition</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li <?php if($this->sRequestController=='admin'): ?> class="active" <?php endif;?> >
+          <a href="<?php echo HTML_ROOT_PATH;?>admin/">Administration</a>
+        </li>
+        <li>
+          <button type="button" class="btn btn-danger navbar-btn" id="btn-logout">Logout</button>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

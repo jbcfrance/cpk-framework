@@ -1,0 +1,167 @@
+<form name="edit_negociation_form" method="POST" action="<?php echo HTML_ROOT_PATH;?>condition/do_edit_negociation/<?php echo $this->aVars['oEntity']->getId();?>">
+  <fieldset>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>ID de l’opération :</strong></span>
+        <input type="text" class="form-control" name="id" placeholder="ID de l’opération" value="<?php echo $this->aVars['oEntity']->getId();?>" readonly>
+        <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Type de négociation :</strong></span>
+        <?php if(false === is_null($this->aVars['oEntity']->getTypeNego())):?>
+        <select name="typeNego_id" class="form-control">
+          <?php foreach($this->aVars['aTypeNego'] as $vTNego): ?>
+          <?php if($vTNego->getId() == $this->aVars['oEntity']->getTypeNego()->getId()) :?>
+          <option selected value="<?php echo $vTNego->getId(); ?>"><?php echo $vTNego->getLabel(); ?></option>
+
+          <?php else:?>
+          <option value="<?php echo $vTNego->getId(); ?>"><?php echo $vTNego->getLabel(); ?></option>
+          <?php endif;?>
+          <?php endforeach; ?>
+        </select>
+        <?php else: ?>
+        <select name="typeNego_id" class="form-control">
+          <option value="">Choose... </option>
+          <?php foreach($this->aVars['aTypeNego'] as $vTNego): ?>
+          <option  value="<?php echo $vTNego->getId(); ?>"><?php echo $vTNego->getLabel(); ?></option>
+          <?php endforeach; ?>
+        </select>
+        <?php endif; ?>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Sous-nego :</strong></span>
+        <?php if(false === is_null($this->aVars['oEntity']->getSousNego())):?>
+        <select name="sousNego_id" class="form-control">
+          <?php foreach($this->aVars['aSousNego'] as $vSNego): ?>
+          <?php if($vSNego->getId() == $this->aVars['oEntity']->getSousNego()->getId()) :?>
+          <option selected value="<?php echo $vSNego->getId(); ?>"><?php echo $vSNego->getLabel(); ?></option>
+
+          <?php else:?>
+          <option value="<?php echo $vSNego->getId(); ?>"><?php echo $vSNego->getLabel(); ?></option>
+          <?php endif;?>
+          <?php endforeach; ?>
+        </select>
+        <?php else: ?>
+        <select name="sousNego_id" class="form-control">
+          <option value="">Choose... </option>
+          <?php foreach($this->aVars['aSousNego'] as $vSNego): ?>
+          <option  value="<?php echo $vSNego->getId(); ?>"><?php echo $vSNego->getLabel(); ?></option>
+          <?php endforeach; ?>
+        </select>
+        <?php endif; ?>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Chef de produit national :</strong></span>
+        <input type="text" class="form-control" name="negociation_chefProduit" placeholder="Chef de produit national"  value="<?php echo $this->aVars['oEntity']->getChefProduit();?>">
+        <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Département :</strong></span>
+        <?php if(false === is_null($this->aVars['oEntity']->getDepartement())):?>
+        <select name="departement_id" class="form-control">
+          <?php foreach($this->aVars['aDepartement'] as $vDept): ?>
+          <?php if($vDept->getId() == $this->aVars['oEntity']->getDepartement()->getId()) :?>
+          <option selected value="<?php echo $vDept->getId(); ?>"><?php echo $vDept->getLabel(); ?></option>
+
+          <?php else:?>
+          <option value="<?php echo $vDept->getId(); ?>"><?php echo $vDept->getLabel(); ?></option>
+          <?php endif;?>
+          <?php endforeach; ?>
+        </select>
+        <?php else: ?>
+        <select name="departement_id" class="form-control">
+          <option value="">Choose... </option>
+          <?php foreach($this->aVars['aDepartement'] as $vDept): ?>
+          <option  value="<?php echo $vDept->getId(); ?>"><?php echo $vDept->getLabel(); ?></option>
+          <?php endforeach; ?>
+        </select>
+        <?php endif; ?>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Famille NCG :</strong></span>
+        <input type="text" class="form-control" name="negociation_famNcg" placeholder="Famille NCG" value="<?php echo $this->aVars['oEntity']->getFamNcg();?>">
+        <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Fournisseur :</strong></span>
+        <input type="text" class="form-control" name="negociation_codeFournisseurSap" placeholder="Fournisseur" value="<?php echo $this->aVars['oEntity']->getCodeFournisseurSap();?>">
+        <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Marque :</strong></span>
+        <input type="text" class="form-control" name="negociation_marque" placeholder="Marque" value="<?php echo $this->aVars['oEntity']->getMarque();?>">
+        <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Groupe de marques :</strong></span>
+        <input type="text" class="form-control" name="negociation_groupMarque" placeholder="Groupe de marques" value="<?php echo $this->aVars['oEntity']->getGroupMarque();?>">
+        <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Codic :</strong></span>
+        <input type="text" class="form-control" name="negociation_codic" placeholder="Codic" value="<?php echo $this->aVars['oEntity']->getCodic();?>">
+        <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Référence :</strong></span>
+        <input type="text" class="form-control" name="negociation_reference" placeholder="Référence" value="<?php echo $this->aVars['oEntity']->getReference();?>">
+        <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Libellé de l’action :</strong></span>
+        <input type="text" class="form-control" name="negociation_labelAction" placeholder="Libellé de l’action" value="<?php echo $this->aVars['oEntity']->getLabelAction();?>">
+        <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Plan Com (HT):</strong></span>
+        <input type="text" class="form-control" name="negociation_planCom" placeholder="Plan Com" value="<?php echo $this->aVars['oEntity']->getPlanCom();?>">
+        <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Date début négociation :</strong></span>
+        <input type="text" class="form-control" name="negociation_dateDebut" placeholder="Date début négociation" value="<?php echo $this->aVars['oEntity']->getDateDebut()->format('d-m-Y');?>">
+        <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="input-group col-sm-8 col-sm-offset-2">
+        <span class="input-group-addon"><strong>Date d’envoi du plan :</strong></span>
+        <input type="text" class="form-control" name="negociation_dateFin" placeholder="Date d’envoi du plan" value="<?php echo $this->aVars['oEntity']->getDateFin()->format('d-m-Y');?>">
+        <span class="input-group-addon addon-feedback" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="form-group col-sm-10 col-sm-offset-1">
+      <div class="col-sm-8 col-sm-offset-2">
+        <input type="submit" class="form-control btn btn-danger" value="Enregistrer les modifications"/>
+      </div>
+    </div>    
+  </fieldset>
+</form>
